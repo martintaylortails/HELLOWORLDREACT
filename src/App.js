@@ -10,6 +10,7 @@ function App() {
             <Header />
             <Navbar />
             <Routes>
+                <Route exact path="/" element={<RecordList />} />
                 <Route path="/create" element={<Create />} />
             </Routes>
             <div>test</div>
