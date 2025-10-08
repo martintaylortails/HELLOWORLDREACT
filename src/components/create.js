@@ -21,7 +21,7 @@ export default function Create() {
 
     async function onSubmit(e) {
         e.preventDefault()
-/*
+
         const newPerson = { ...form }
         
         const response = await fetch(`${process.env.REACT_APP_TEST}/record/add`, {
@@ -37,7 +37,7 @@ export default function Create() {
             window.alert(message)
             return
         }
-            */
+            
 
         setDate(
 
