@@ -25,6 +25,8 @@ export default function Create() {
         e.preventDefault()
 
         const newPerson = { ...form }
+
+        console.log('newperson',newPerson)
         
         const response = await fetch(`${process.env.REACT_APP_TEST}/record/add`, {
             method: "POST",
