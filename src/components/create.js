@@ -32,6 +32,8 @@ export default function Create() {
             body: JSON.stringify(newPerson)
         })
 
+        console.log('response',response)
+
         if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`
             window.alert(message)
