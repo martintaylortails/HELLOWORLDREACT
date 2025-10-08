@@ -1,0 +1,36 @@
+.footerBlock{height:300px;width:100%;background:#cfcfcf;}
+.headerBlock{background: #f1f1f1;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: solid 1px #cfcfcf;}
+.pageContainer{width:100%;background:#f1f1f1;}
+
+.subTitleContainer{width:100%;}
+.subTitle{margin:10px auto;font-weight:bold;font-size:18px;width:300px;text-align:center;color:#f1f1f1;background:#3f3f3f;border-radius:10px;padding:3px;}
+
+.mid-content{width:90%;margin:0px auto;}
+
+.sectionContainer{background: #f1f1f1;
+    border-radius: 20px;
+    padding: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;}
+
+.form-cont{width:40%;display:inline-block;margin:10px 5%;}
+
+label{width:100%;}
+
+tbody{background:#f1f1f1;}
+
+.filterBox{background:#f1f1f1;}
+
+.pound{float:left;line-height:37px;}
+
+.form-control{float:left;width:90% !important;}
+
+.green{background:darkolivegreen}
+
+.blue{background:blue;}
+
+.rbc-header{font-size:30px !important;}
