@@ -14,12 +14,14 @@ export default function Create() {
     console.log(date)
 
     function updateForm(value) {
+        console.log('setform');
         setForm((prev) => {
             return { ...prev, ...value }
         })
     }
 
     async function onSubmit(e) {
+        console.log('onsubmit');
         e.preventDefault()
 
         const newPerson = { ...form }
