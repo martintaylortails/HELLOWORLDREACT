@@ -4,7 +4,7 @@ import Header from "./components/header"
 import Navbar from "./components/navbar"
 import RecordList from "./components/recordList"
 import Create from "./components/create"
-import Cleaining from "./components/cleaning"
+import Cleaning from "./components/cleaning"
 
 
 function App() {
