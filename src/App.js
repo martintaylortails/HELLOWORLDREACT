@@ -15,7 +15,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<RecordList />} />
                 <Route path="/create" element={<Create />} />
-                <Route path="/create" element={<Cleaning />} />
+                <Route path="/cleaning" element={<Cleaning />} />
             </Routes>
             <div>test</div>
     </div>
