@@ -4,6 +4,8 @@ import Header from "./components/header"
 import Navbar from "./components/navbar"
 import RecordList from "./components/recordList"
 import Create from "./components/create"
+import Cleaining from "./components/cleaning"
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<RecordList />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/create" element={<Cleaning />} />
             </Routes>
             <div>test</div>
     </div>
