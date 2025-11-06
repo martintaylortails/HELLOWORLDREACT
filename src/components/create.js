@@ -62,7 +62,7 @@ export default function Create() {
 
     return (
         <div>
-            <h3>Create New Record</h3>
+            <h3>Create New Recordd</h3>
             <form onSubmit={onSubmit}>
             <div className="form-group">
                     <label htmlFor="name">Apartment</label>
