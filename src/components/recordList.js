@@ -95,7 +95,7 @@ export default function RecordList() {
             return
         }
 
-        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/api/${id}`, {
+        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/api/record/${id}`, {
             method: "DELETE"
         })
 
@@ -109,7 +109,7 @@ export default function RecordList() {
             return
         }
 
-        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/api/${id}`, {
+        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/api/record/${id}`, {
             method: "DELETE"
         })
 
