@@ -57,7 +57,7 @@ export default function RecordList() {
 
     useEffect(() => {
         async function getRecords() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/api/record`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/api/record/`)
 
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
@@ -65,13 +65,12 @@ export default function RecordList() {
                 return
             }
 
-            const records = await response.json();
-            console.log('records',records)
+            const records = await response.json()
             setRecords(records)
         }
 
         async function getCleaning() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/api/cleaning`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/api/cleaning/`)
 
             if (!response.ok) {
                 const message = `An error occurredddd: ${response.statusText}`

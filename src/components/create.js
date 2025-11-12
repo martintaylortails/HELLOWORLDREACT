@@ -28,7 +28,7 @@ export default function Create() {
 
         console.log('newperson',newPerson)
         
-        const response = await fetch(`${process.env.REACT_APP_TEST}/record/add`, {
+        const response = await fetch(`${process.env.REACT_APP_TEST}/api/record/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
