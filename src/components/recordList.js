@@ -30,7 +30,7 @@ const Record = (props) => {
             <td>{props.record.vat}</td>
             <td>{props.record.net}</td>
             <td>
-                <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
+                <Link className="btn btn-link" to={`/record/${props.record._id}`}>Edit</Link> |
                 <button
                     className="btn btn-link"
                     onClick={() => {
