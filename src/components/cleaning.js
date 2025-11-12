@@ -10,7 +10,7 @@ export default function Create() {
     useEffect(() => {
 
         async function getCleaning() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/cleaning/`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/api/cleaning/`)
 
             if (!response.ok) {
                 const message = `An error occurredddd: ${response.statusText}`
