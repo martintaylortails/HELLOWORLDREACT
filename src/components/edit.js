@@ -28,15 +28,15 @@ export default function Edit() {
     console.log(setEndDate);
 
     
-    const handleDateChange = (date) => {
-        if (date) {
+    //const handleDateChange = (date) => {
+        //if (date) {
           // Set time to noon to prevent timezone shift (e.g., from UTC to BST)
-          date.setHours(12, 0, 0, 0);
+          //date.setHours(12, 0, 0, 0);
           //setSelectedDate(date);
-        } else {
+        //} else {
           //setSelectedDate(null);
-        }
-      };
+        //}
+      //};
       
 
     const Clean = (props) => {
@@ -237,7 +237,7 @@ export default function Edit() {
                             id="end"
                             format = 'dd-mm-yyyy'
                             selected={form.end} 
-                            //onSelect={(endDate) => setEndDate(endDate)} 
+                            onSelect={(endDate) => setEndDate(endDate)} 
                             onChange={(endDate) => updateForm({ end: endDate })}
                         
                         />
