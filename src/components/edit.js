@@ -52,7 +52,7 @@ export default function Edit() {
         async function fetchData() {
 
             const id = params.id
-            const response = await fetch(`${process.env.REACT_APP_TEST}/record/${id}`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/api/record/${id}`)
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
                 window.alert(message)
@@ -69,7 +69,7 @@ export default function Edit() {
 
             setForm(record)
 
-            const cleanresponse = await fetch(`${process.env.REACT_APP_TEST}/cleaning/`)
+            const cleanresponse = await fetch(`${process.env.REACT_APP_TEST}/api/cleaning/`)
 
             if (!cleanresponse.ok) {
                 const cleanmessage = `An error occurredddd: ${cleanresponse.statusText}`
@@ -88,7 +88,7 @@ export default function Edit() {
         }
 
         async function getCleaning() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/cleaning/`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/api/cleaning/`)
 
             if (!response.ok) {
                 const message = `An error occurredddd: ${response.statusText}`
@@ -138,7 +138,7 @@ export default function Edit() {
         e.preventDefault()
 
         const editedPerson = { ...form }
-        const response = await fetch(`${process.env.REACT_APP_TEST}/update/${params.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_TEST}/api/update/${params.id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
