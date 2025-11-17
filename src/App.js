@@ -16,7 +16,8 @@ function App() {
             <Header />
             <Navbar />
             <Routes>
-            <Route path="/edit/:id" element={<Edit />} />
+                <Route exact path="/" element={<RecordList />} />
+                <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/cleaning" element={<Cleaning />} />
