@@ -238,7 +238,7 @@ export default function Edit() {
                             format = 'dd-mm-yyyy'
                             selected={form.end} 
                             //onSelect={(endDate) => setEndDate(endDate)} 
-                            onChange={(endDate) => handleDateChange({ end: endDate })}
+                            onChange={(endDate) => updateForm({ end: endDate })}
                         
                         />
                     </div>
