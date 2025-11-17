@@ -1,63 +1,46 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import format from "date-fns/format";
+import getDay from "date-fns/getDay";
+import parse from "date-fns/parse";
+import startOfWeek from "date-fns/startOfWeek";
+import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import events from "./events";
+//import "./App.css";
 
-const Record = (props) => {
-    var star = props.record.start;
-    if(star !== "" && star !== null && star !== undefined){
-        star = star.split('T')[0];
-        star = star.split('-');
-        star = star[2] + "-" + star[1] + "-" + star[0];
-    }else{
-        star = 'chuck'
-    }
-    var endd = props.record.end;
-    if(endd !== "" && endd !== null && endd !== undefined){
-         endd = endd.split('T')[0];
-         endd = endd.split('-');
-         endd = endd[2] + "-" + endd[1] + "-" + endd[0];
-    }else{
-        endd = 'chuck';
-    }
-    return (
-        <tr>
-            <td>{props.record.apartment}</td>
-            <td>{props.record.name}</td>
-            <td>{star}</td>
-            <td>{endd}</td>
-            <td>{props.record.nights}</td>
-            <td>{props.record.gross}</td>
-            <td>{props.record.commission}</td>
-            <td>{props.record.vat}</td>
-            <td>{props.record.net}</td>
-            <td>
-                <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
-                <button
-                    className="btn btn-link"
-                    onClick={() => {
-                        props.deleteRecord(props.record._id)
-                    }}
-                >
-                    Delete
-                </button>
-            </td>
-        </tr>
-    )
-}
 
-const Clean = (props) => {
-    return (
-            <div>{props.clean.Towels.Amount}</div>
-    )
 
-}
 
-export default function RecordList() {
+
+
+export default function Create() {
+
+
+    const [form, setForm] = useState({
+        name: "",
+        position: "",
+        level: ""
+    })
+    const navigate = useNavigate()
+    const [date, setDate] = useState(new Date());
     const [records, setRecords] = useState([])
-    const [cleaning, setCleaning] = useState([])
+    const [events, setEvents] = useState([
+        {
+          title: 'Team Meeting',
+          start: new Date(2025, 6, 29, 10, 0), // July 29, 2025 10:00 AM
+          end: new Date(2025, 6, 30, 11, 0),
+          apartment: 'test',
+        },
+      ]);
 
-    useEffect(() => {
+      useEffect(() => {
         async function getRecords() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/api/record/`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/record/`)
 
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
@@ -65,102 +48,117 @@ export default function RecordList() {
                 return
             }
 
-            const records = await response.json()
-            setRecords(records)
-        }
+            const records = await response.json();
 
-        async function getCleaning() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/api/cleaning/`)
-
-            if (!response.ok) {
-                const message = `An error occurredddd: ${response.statusText}`
-                window.alert(message)
-                return
+            let ev = [];
+            let g;
+            for(g = 0 ; g < records.length ; g++){
+                let start = records[g].start;
+                start = start.split('T')[0];
+                let startYear = start.split('-')[0];
+                let startMonth = (start.split('-')[1])-1;
+                let startDay = start.split('-')[2];
+                let end = records[g].end;
+                end = end.split('T')[0];
+                let endYear = end.split('-')[0];
+                let endMonth = (end.split('-')[1])-1;
+                let endDay = end.split('-')[2];
+                ev.push({
+                    title: records[g].name,
+                    apartment:records[g].apartment,
+                    start: new Date(startYear, startMonth, startDay, 0, 0), // July 29, 2025 10:00 AM
+                    end: new Date(endYear, endMonth, endDay, 23, 0),
+                  })
             }
 
-            const cleaning = await response.json()
-            setCleaning(cleaning)
+            setRecords(records);
+            setEvents(ev);
+            console.log(records);
+
+
         }
 
-        getRecords()
-        getCleaning()
+        getRecords();
 
-        return
-    }, [records.length,cleaning.length])
+        return;
+    }, []);
 
-    async function deleteRecord(id) {
-        const result = window.confirm("Will this employee be removed from the list?")
-        if (!result) {
-            return
+
+    const handleSelectSlot = ({ start, end }) => {
+        const title = prompt('Enter event title:');
+        const apartment = prompt('Enter apartmnet title:');
+        if (title) {
+          setEvents([...events, { start, end, title, apartment }]);
         }
+      };
+      const CustomEvent = ({ event }) => (
+        <span>
+          <strong>{event.title}</strong><br />
+          <small>{event.apartment}</small>
+        </span>
+        
+      );
 
-        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/api/${id}`, {
-            method: "DELETE"
-        })
 
-        const newRecords = records.filter((record) => record._id !== id)
-        setRecords(newRecords)
+const locales = {
+    "en-US": require('date-fns/locale/en-US')
+  }
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+  })
+
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    let backgroundColor = event.apartment === "Loughrigg View" ? "darkolivegreen" : "blue";
+    if (isSelected) {
+      backgroundColor = "#ff5722"; // Highlight selected event
     }
+  
+    const style = {
+      backgroundColor,
+      borderRadius: '10px',
+      color: '#f1f1f1',
+      border: 'none',
+      display: 'block',
+      fontSize:'20px',
+      height:'60px',
+      lineHeight:'25px',
+    };
+  
+    return {
+      style,
+    };
+  };
 
-    async function deleteClean(id) {
-        const result = window.confirm("Will this employee be removed from the list?")
-        if (!result) {
-            return
-        }
+    
 
-        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/api/${id}`, {
-            method: "DELETE"
-        })
 
-        const newRecords = records.filter((record) => record._id !== id)
-        setRecords(newRecords)
-    }
-
-    function recordList() {
-        return records.map((record) => {
-            return (
-                <Record
-                    key={record._id}
-                    record={record}
-                    deleteRecord={() => deleteRecord(record._id)}
-                />
-            )
-        })
-    }
-
-    function cleaningList(){
-        return cleaning.map((cleaning) => {
-            return (
-                <Clean
-                    key={cleaning._id}
-                    clean={cleaning}
-                    deleteClean={() => deleteClean(cleaning._id)}
-                />
-            )
-        })
-    }
+        
+       // navigate("/")
 
     return (
         <div>
-            <div>{cleaningList()}</div>
-            <h3 className="ps-2">Bookings</h3>
-            <table className="table table-striped" style={{ marginTop: 20 }}>
-                <thead>
-                    <tr>
-                        <th>Apartment</th>
-                        <th>Name</th>
-                        <th>Date Start</th>
-                        <th>Date End</th>
-                        <th>Nights</th>
-                        <th>Gross</th>
-                        <th>Commission</th>
-                        <th>VAT</th>
-                        <th>Net</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>{recordList()}</tbody>
-            </table>
+            <h3>Calendar</h3>
+            <div>Text tetxt</div>
+            <div>The calendar</div>
+            <div>blah</div>
+            <div className="App">
+                <Calendar 
+                    localizer={localizer} 
+                    events={events} 
+                    startAccessor="start" 
+                    endAccessor="end" 
+                    onSelectSlot={handleSelectSlot}
+                    components={{
+                        event: CustomEvent
+                      }}
+                    eventPropGetter={eventStyleGetter}
+                    style={{height: 1000, margin: "50px"}} 
+                />
+            </div>
         </div>
     )
 }
