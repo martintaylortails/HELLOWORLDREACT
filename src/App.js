@@ -3,7 +3,10 @@ import { Route, Routes } from "react-router-dom"
 import Header from "./components/header"
 import Navbar from "./components/navbar"
 import RecordList from "./components/recordList"
+import Edit from "./components/edit"
 import Create from "./components/create"
+import Calendar from "./components/calendar"
+import Filter from "./components/filter"
 import Cleaning from "./components/cleaning"
 
 
@@ -13,9 +16,11 @@ function App() {
             <Header />
             <Navbar />
             <Routes>
-                <Route exact path="/" element={<RecordList />} />
+            <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/calendar" element={<Calendar />} />
                 <Route path="/cleaning" element={<Cleaning />} />
+                <Route path="/filter" element={<Filter />} />
             </Routes>
             <div>test</div>
     </div>
