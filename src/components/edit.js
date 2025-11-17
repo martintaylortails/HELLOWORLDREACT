@@ -45,6 +45,7 @@ export default function Edit() {
         )
     
     }
+    console.log(Clean);
 
     useEffect(() => {
 
@@ -106,7 +107,7 @@ export default function Edit() {
 
         fetchData();
 
-        //getCleaning();
+        getCleaning();
 
         return
     }, [params.id, navigate])
