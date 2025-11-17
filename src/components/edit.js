@@ -23,6 +23,8 @@ export default function Edit() {
 
     const [endDate, setEndDate] = useState(form.endDate);
 
+    console.log(date);
+
     
     const handleDateChange = (date) => {
         if (date) {
