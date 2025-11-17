@@ -138,7 +138,7 @@ const locales = {
             <h3>Calendar</h3>
             <div>Text tetxt</div>
             <div>The calendar</div>
-            <div>blah</div>
+            <div>blahh</div>
             <div className="App">
                 <Calendar 
                     localizer={localizer} 
