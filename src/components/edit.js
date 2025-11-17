@@ -24,6 +24,8 @@ export default function Edit() {
     const [endDate, setEndDate] = useState(form.endDate);
 
     console.log(date);
+    console.log(endDate);
+    console.log(setEndDate);
 
     
     const handleDateChange = (date) => {
@@ -95,6 +97,8 @@ export default function Edit() {
 
             const cleaning = await response.json();
 
+            console.log(cleaning);
+
             setCleaning(cleaning);
 
             
@@ -112,7 +116,7 @@ export default function Edit() {
             return { ...prev, ...value }
         })
     }
-
+/*
    function cleaningList(){
         return cleaning.map((cleaning) => {
             return (
@@ -124,6 +128,7 @@ export default function Edit() {
             )
         })
     }
+        */
         
 
         
