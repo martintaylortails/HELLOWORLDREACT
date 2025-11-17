@@ -6,7 +6,6 @@ import RecordList from "./components/recordList"
 import Edit from "./components/edit"
 import Create from "./components/create"
 import Calendar from "./components/calendar"
-import Filter from "./components/filter"
 import Cleaning from "./components/cleaning"
 
 
@@ -21,7 +20,6 @@ function App() {
                 <Route path="/create" element={<Create />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/cleaning" element={<Cleaning />} />
-                <Route path="/filter" element={<Filter />} />
             </Routes>
             <div>test</div>
     </div>
