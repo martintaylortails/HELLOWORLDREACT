@@ -7,6 +7,7 @@ import Edit from "./components/edit"
 import Create from "./components/create"
 import Calendar from "./components/calendar"
 import Cleaning from "./components/cleaning"
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
 function App() {
