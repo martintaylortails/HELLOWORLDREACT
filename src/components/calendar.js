@@ -130,6 +130,12 @@ const locales = {
     
 
 console.log(form);
+console.log(setForm);
+console.log(navigate);
+console.log(date);
+console.log(setDate);
+console.log(records);
+
         
        // navigate("/")
 
