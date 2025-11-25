@@ -129,7 +129,7 @@ const locales = {
 
     
 
-
+console.log(form);
         
        // navigate("/")
 
