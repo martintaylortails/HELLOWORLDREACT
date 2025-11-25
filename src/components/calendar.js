@@ -8,10 +8,6 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 
 
 
-
-
-
-
 export default function Create() {
 
 
@@ -34,7 +30,7 @@ export default function Create() {
 
       useEffect(() => {
         async function getRecords() {
-            const response = await fetch(`${process.env.REACT_APP_TEST}/record/`)
+            const response = await fetch(`${process.env.REACT_APP_TEST}/api/record/`)
 
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
