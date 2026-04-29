@@ -10,11 +10,7 @@ import './test.css';
 export default function Extra() {
     return (
         <div className='headerBlock'>
-<<<<<<< HEAD
-            <div>Loughrigg View and Kelsick Heights Bookings</div>
-=======
             <div>Loughrigg View and Kelsick Heights Bookingss</div>
->>>>>>> 20c57bf (sf)
             <div><img src='' alt='test'></img></div>
         </div>
     );
