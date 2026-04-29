@@ -138,12 +138,9 @@ console.log(records);
     return (
         <div>
             <h3>Calendar</h3>
-<<<<<<< HEAD
-            <div>Text tetxt</div>
+            <div>Text text</div>
             <div>The calendar</div>
             <div>blahh</div>
-=======
->>>>>>> 20c57bf (sf)
             <div className="App">
                 <Calendar 
                     localizer={localizer} 
